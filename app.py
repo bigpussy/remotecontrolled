@@ -7,13 +7,12 @@ def home():
 	return render_template('index.html')
 
 @app.route('/rgb.html', methods=['GET'])
-def rgb():
-	#print request.form['red']
-	return '''<form action="/signin" method="post">
-	              <p><input name="username"></p>
-		                    <p><input name="password" type="password"></p>
-				                  <p><button type="submit">Sign In</button></p>
-						                </form>'''
+def myrgb():
+	if request.args['red']=='1':
+		rgb(1,0,0)
+	if request.args['red']=='0':
+		rgb(0,0,0)
+	return '1'
 
 @app.route('/signin', methods=['POST'])
 def signin():
