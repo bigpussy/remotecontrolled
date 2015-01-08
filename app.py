@@ -1,5 +1,6 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 from rgb import rgb
+import os
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -13,6 +14,12 @@ def myrgb():
 	if request.args['red']=='0':
 		rgb(0,0,0)
 	return '1'
+
+@app.route('/css/jquery.mobile-1.4.5.min.css')
+
+def favicon():
+
+	return redirect(url_for('css', filename='jquery.mobile-1.4.5.min.css'), code=301)
 
 @app.route('/signin', methods=['POST'])
 def signin():
